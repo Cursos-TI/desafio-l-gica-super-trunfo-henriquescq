@@ -301,7 +301,7 @@ int main () {
 
                     case 5:
 
-                        if (population_density > population_density1) {
+                        if (population_density < population_density1) {
                             printf ("\n   ---Comparação--- \n");
                             printf ("Carta 1\n");
                             printf ("Pais: %s\n", country_name);

@@ -1,359 +1,352 @@
-#include <stdio.h> // biblioteca de IO
+#include <stdio.h> // Biblioteca de IO
+#include <stdlib.h> // Controle de processos: Usar system ou exit (interação com SO)
+#include <Windows.h> // Biblioteca funções do Windows
 
 int main () {
 
-    char country_letter [5], code_letter [10], country_name [50], country_letter1 [5], code_letter1 [10], country_name1 [50]; // Letra do Pais, código das cartas e nome do Pais.
-    int tourist_attractions, tourist_attractions1, opcao, comp_cart1; // População, pontos turísticos, opção de escolha, comparação carta.
-    unsigned long int populat, populat1; // População
-    unsigned long long int area, PIB, area1, PIB1; // Área, PIB (Produto interno bruto)
-    double population_density, PIB_per_capita, population_density1, PIB_per_capita1; //Densidade Populacional, PIB por capital
+    char country_letter1 [5], code_letter1 [10], country_name1 [50], country_letter2 [5], code_letter2 [10], country_name2 [50]; // Letra do Pais, código das cartas e nome do Pais.
+    int tourist_attractions1, tourist_attractions2, opcao, comp_atrib1, comp_atrib2, game; // Pontos turísticos, Opção de escolha menu interativo, Escolha e Comparação de atributo.
+    unsigned long int populat1, populat2; // População
+    unsigned long long int area1, PIB1, area2, PIB2; // Área, PIB1 (Produto interno bruto)
+    double population_density1, PIB_per_capita1, population_density2, PIB_per_capita2; //Densidade Populacional, PIB1 por capital
     
-    /* Entrada de dados da carta 1. */
-    printf ("Carta 1: \n");
+    /*Entrada dos dados na carta 1*/
 
-    printf ("\nDigite uma Letra de 'A' a 'H' representando o Pais desejado: ");
-        scanf ("%s",country_letter);
+    printf ("-------JOGO DO SUPER TRUNFO-------\n"
+            "1. Como funciona?\n"
+            "2. Regras.\n"
+            "3. Iniciar Jogo.\n"
+            "4. Sair.\n"
+            "Escolha um das opções: ");
+    scanf ("%d", &game);
 
-    printf ("Digite o código da carta A, dentre 01 a 04: %s", country_letter);
-        scanf ("%s",code_letter);
+    switch (game)
+    {
+    case 1:
+            printf ("\nComo o jogo funciona\n"
+                    "\nO jogo funciona entre duas cartas, onde cada carta terá dois atributos a serem comparados,\n"
+                    "logo após serem comparados, ganha quem tiver mais pontuação na soma de atributos e na\n"
+                    "comparação dos atributos individualmente. Lembrando que na Densidade Populacional, ganha quem\n"
+                    "tiver o menor valor.\n");
+    break;
 
-    printf ("Digite o nome do Pais: ");
-        scanf ("%s",country_name);
+    case 2:
+                printf ("\nRegras\n"
+                        "\n1. Jogo do Super Trunfo está em sua versão DEMO, então evite errar nas informações pedidas. Se por\n"
+                        "algum acaso erre, em alguns casos o programa irá ser encerrado e terá que inicia-lo novamente. Me\n"
+                        "desculpe por isso.\n"
+                        "2. Espero que se divirta ao máximo e que goste, por agora o jogo não tem regras por estar em sua versão\n"
+                        "DEMO. Mas os desenvolvedores estão a todo vapor para proporcionar a melhor experiência dentro do jogo\n"
+                        "para vocês.\n");
+    break;
 
-    printf ("Digite a população do Pais %s: ", country_name);
-        scanf ("%lu", &populat);
+    case 3:
+            printf ("\nIniciando");
+            Sleep (1000);
+            printf(".");
+            Sleep (1000);
+            printf(".");
+            Sleep (1000);
+            printf(".");
+            Sleep (1000);
+            printf(".");
+            Sleep (1000);
+            printf(".\n");
 
-    printf ("Digite a área do Pais %s: ", country_name);
-        scanf ("%llu", &area);
+            printf ("\nDigite as informações da Carta 1: \n");
 
-    printf ("Digite o PIB do Pais %s: ", country_name);
-        scanf ("%llu", &PIB);
-    
-    printf ("Digite os números de pontos turísticos do Pais %s: ", country_name);
-        scanf ("%d", &tourist_attractions);
+            printf ("\nLetra de 'A' a 'Z' representando o Pais desejado: ");
+                scanf ("%s",country_letter1);
+            printf ("Código da Carta 1, dentre 01 a 05: ");
+                scanf ("%s",code_letter1);
+            printf ("Nome do Pais: ");
+                scanf ("%s",country_name1);
+            printf ("População: ");
+                scanf ("%lu", &populat1);
+            printf ("Área: ");
+                scanf ("%llu", &area1);
+            printf ("PIB: ");
+                scanf ("%llu", &PIB1);
+            printf ("Número de Pontos turísticos: ");
+                scanf ("%d", &tourist_attractions1);
 
-    /* Processamento da carta 1*/
+            /*Cálculo da Densidade Populacional e PIB por capital da Carta 1 */
+            population_density1 = (double)populat1 / area1;
+            PIB_per_capita1 = (double)PIB1 / populat1;
 
-    population_density = populat / area;
-    PIB_per_capita = PIB / populat;
+            /*Entrada dos dados na carta 2*/
+            printf ("\nDigite as informações da Carta 2: \n");
 
-    /* Entrada de dados da carta 2. */
-   
-    printf ("\nCarta 2: \n");
+            printf ("\nLetra de 'A' a 'Z' representando o Pais desejado: ");
+                scanf ("%s",country_letter2);
+            printf ("Código da carta A, dentre 01 a 05: ");
+                scanf ("%s",code_letter2);
+            printf ("Nome do Pais: ");
+                scanf ("%s",country_name2);
+            printf ("População: ");
+                scanf ("%lu", &populat2);
+            printf ("Área: ");
+                scanf ("%llu", &area2);
+            printf ("PIB: ");
+                scanf ("%llu", &PIB2);
+            printf ("Número de Pontos turísticos: ");
+                scanf ("%d", &tourist_attractions2);
 
-    printf ("\nDigite uma Letra de 'A' a 'H' representando o Pais desejado: ");
-    scanf (" %s",country_letter1);
+            /*Cálculo da Densidade Populacional e PIB por capital da Carta 2 */
 
-    printf ("Digite o código da carta A, dentre 01 a 04: %s", country_letter1);
-    scanf (" %s",code_letter1);
+            population_density2 = (double)populat2 / area2;
+            PIB_per_capita2 = (double)PIB2 / populat2;
 
-    printf ("Digite o nome do Pais: ");
-    scanf ("%s",country_name1);
+            /*Variaveis somente de armazenamento de informação para exibição dos dados*/
+            unsigned long int exb_cart1_atrb1_lu, exb_cart1_atrb2_lu, exb_cart2_atrb1_lu, exb_cart2_atrb2_lu; // População
+            unsigned long long int exb_cart1_atrb1_llu, exb_cart1_atrb2_llu, exb_cart2_atrb1_llu, exb_cart2_atrb2_llu, exb_cart1_atrb1_lluu, exb_cart1_atrb2_lluu, exb_cart2_atrb1_lluu, exb_cart2_atrb2_lluu, sum1, sum2; // PIB1 e Área
+            double exb_cart1_atrb1_f, exb_cart1_atrb2_f, exb_cart2_atrb1_f, exb_cart2_atrb2_f; //Densidade Populacional e PIB1 por capital
+            int exb_cart1_atrb1_int, exb_cart1_atrb2_int, exb_cart2_atrb1_int, exb_cart2_atrb2_int, test1 = 0, test2 = 0, victory_cart = 0, victory_cart1 = 0; // Pontos Túristicoa e Teste para vencedor ou perdedor
+            char *attribute1, *attribute2; // Exibição de qual atributo está usando atributo 1 e 2.
 
-    printf ("Digite a população do Pais %s: ", country_name1);
-    scanf ("%lu", &populat1);
-
-    printf ("Digite a área do Pais %s: ", country_name1);
-    scanf ("%llu", &area1);
-
-    printf ("Digite o PIB do Pais %s: ", country_name1);
-    scanf ("%llu", &PIB1);
-    
-    printf ("Digite os números de pontos turísticos do Pais %s: ", country_name1);
-    scanf ("%d", &tourist_attractions1);
-
-    /* Processamento da carta 2*/
-
-    population_density1 = populat1 / area1;
-    PIB_per_capita1 = PIB1 / populat1;
-
-    /*Abertura do menu interativo escolher ver as informações da cartas ou comparar atributos*/
-    printf ("\n---Menu---\n");
-    printf ("1. Informações da carta 1.\n");
-    printf ("2. Informações da carta 2.\n");
-    printf ("3. Comparação de atributos.\n");
-    printf ("Escolha uma opção: ");
-    scanf ("%d", &opcao);
-
-        switch (opcao) {
-        
-            case 1:
-            printf ("\nCarta 1: \n");
-
-            printf ("\nLetra do Pais: %s \n", country_letter);
-            printf ("Código: %s%s \n", country_letter, code_letter);
-            printf ("Nome do Pais: %s \n", country_name);
-            printf ("População: %lu \n", populat);
-            printf ("Área: %llu km² \n", area);
-            printf ("PIB: %llu \n", PIB);
-            printf ("Números de Pontos Turísticos: %d \n", tourist_attractions);
-            printf ("Densidade Populacional: %.2f \n", population_density);
-            printf ("PIB por capital: %.2f \n", PIB_per_capita);
-            break;
-
-            case 2:
-            printf ("\nCarta 2: \n");
-
-            printf ("\nEstado: %s \n", country_letter1);
-            printf ("Código: %s%s \n", country_letter1, code_letter1);
-            printf ("Nome da Cidade: %s \n", country_name1);
-            printf ("População: %lu \n", populat1);
-            printf ("Área: %llu km² \n", area1);
-            printf ("PIB: %llu \n", PIB1);
-            printf ("Números de Pontos Turísticos: %d \n", tourist_attractions1);
-            printf ("Densidade Populacional: %.2f \n", population_density1);
-            printf ("PIB por capital: %.2f \n", PIB_per_capita1);
-            break;
-
-            case 3:
-            /*Opção de comparar atributos e já realizar a saída do resultado*/
-                    printf ("\n     ---Comparação de atributos---\n");
-                    printf ("1. População\n");
-                    printf ("2. Área\n");
-                    printf ("3. PIB\n");
-                    printf ("4. Números de Pontos Turísticos\n");
-                    printf ("5. Densidade Populacional\n");
-                    printf ("Escolha um dos atributos acima para realizar a comparação: ");
-                    scanf ("%d", &comp_cart1);
-
-                switch (comp_cart1) {
-
+            /*/////////////////////////////////////////////////////////////////////////////////////
+            Abertura do menu interativo escolher ver as informações da cartas ou comparar atributos
+            /////////////////////////////////////////////////////////////////////////////////////*/
+                printf ("\n-----Menu----\n"
+                        "1. Informações da carta 1.\n"
+                        "2. Informações da carta 2.\n"
+                        "3. Comparação de atributos.\n"
+                        "Escolha uma opção: ");
+                    scanf ("%d", &opcao);
+            
+            /*Switch menu interativo para escokha de exibição ou comparação*/
+                switch (opcao) {
+                
                     case 1:
-                    if (populat > populat1) {
-                        printf ("\n   ---Comparação--- \n");
-                        printf ("Carta 1\n");
-                        printf ("Pais: %s\n", country_name);
-                        printf ("Atributo: População\n");
-                        printf ("Valores: %lu\n", populat);
-                        
-                        printf ("\nCarta 2\n");
-                        printf ("Pais: %s\n", country_name1);
-                        printf ("Atributo: População\n");
-                        printf ("Valores: %lu\n", populat1);
-                        printf ("Vencedor: Carta 1: População (%lu Habitantes).\n", populat);
+                    printf ("\nCarta 1: \n");
 
-                    }
-                    else if (populat == populat1){
-                        
-                        printf ("\n   ---Comparação--- \n");
-                        printf ("Carta 1\n");
-                        printf ("Pais: %s\n", country_name);
-                        printf ("Atributo: População\n");
-                        printf ("Valores: %lu\n", populat);
-
-                        printf ("\nCarta 2\n");
-                        printf ("Pais: %s\n", country_name1);
-                        printf ("Atributo: População\n");
-                        printf ("Valores: %lu\n", populat1);
-                        printf ("Vencedor: Empate! Sendo que Carta 1: População com %lu Habitantes e Carta 2: População com %lu Habitantes.\n", populat, populat1);
-                    }
-                    else {
-                        printf ("\n   ---Comparação--- \n");
-                        printf ("Carta 1\n");
-                        printf ("Pais: %s\n", country_name);
-                        printf ("Atributo: População\n");
-                        printf ("Valores: %lu\n", populat);
-                        
-                        printf ("\nCarta 2\n");
-                        printf ("Pais: %s\n", country_name1);
-                        printf ("Atributo: População\n");
-                        printf ("Valores: %lu\n", populat1);
-                        printf ("Vencedor: Carta 2: População (%lu Habitantes).\n", populat1);
-                        
-                    }
+                    printf ("\nLetra do País: %s \n", country_letter1);
+                    printf ("Código: %s%s \n", country_letter1, code_letter1);
+                    printf ("Nome: %s \n", country_name1);
+                    printf ("População: %lu\n", populat1);
+                    printf ("Área: %llu km²\n", area1);
+                    printf ("PIB: %llu\n", PIB1);
+                    printf ("Números de Pontos Turísticos: %d \n", tourist_attractions1);
+                    printf ("Densidade Populacional: %.2f \n", population_density1);
+                    printf ("PIB por capital: %.2f \n", PIB_per_capita1);
                     break;
 
                     case 2:
+                    printf ("\nCarta 2: \n");
 
-                        if (area > area1) {
-                            printf ("\n   ---Comparação--- \n");
-                            printf ("Carta 1\n");
-                            printf ("Pais: %s\n", country_name);
-                            printf ("Atributo: Área\n");
-                            printf ("Valores: %llu\n", area);
-                            
-                            printf ("\nCarta 2\n");
-                            printf ("Pais: %s\n", country_name1);
-                            printf ("Atributo: Área\n");
-                            printf ("Valores: %llu\n", area1);
-                            printf ("Vencedor: Carta 1: Área (%lluKM²).\n", area);
-    
-                        }
-                        else if (area == area1){
-                            
-                            printf ("\n   ---Comparação--- \n");
-                            printf ("Carta 1\n");
-                            printf ("Pais: %s\n", country_name);
-                            printf ("Atributo: Área\n");
-                            printf ("Valores: %llu\n", area);
-    
-                            printf ("\nCarta 2\n");
-                            printf ("Pais: %s\n", country_name1);
-                            printf ("Atributo: Área\n");
-                            printf ("Valores: %llu\n", area1);
-                            printf ("Vencedor: Empate! Sendo que Carta 1: Área com %lluKM² e Carta 2: Área com %lluKM².\n", area, area1);
-                        }
-                        else {
-                            printf ("\n   ---Comparação--- \n");
-                            printf ("Carta 1\n");
-                            printf ("Pais: %s\n", country_name);
-                            printf ("Atributo: Área\n");
-                            printf ("Valores: %llu\n", area);
-                            
-                            printf ("\nCarta 2\n");
-                            printf ("Pais: %s\n", country_name1);
-                            printf ("Atributo: Área\n");
-                            printf ("Valores: %llu\n", area1);
-                            printf ("Vencedor: Carta 2: Área (%lluKM²).\n", area1);
-                            
-                        }
+                    printf ("\nLetra do País: %s \n", country_letter2);
+                    printf ("Código: %s%s \n", country_letter2, code_letter1);
+                    printf ("Nome: %s \n", country_name2);
+                    printf ("População: %lu \n", populat2);
+                    printf ("Área: %llu km² \n", area2);
+                    printf ("PIB: %llu \n", PIB2);
+                    printf ("Números de Pontos Turísticos: %d \n", tourist_attractions2);
+                    printf ("Densidade Populacional: %.2f \n", population_density2);
+                    printf ("PIB por capital: %.2f \n", PIB_per_capita2);
                     break;
 
                     case 3:
+                    /*Opção para comparar atributos e já armazenar quantas vitórias que cada jogador terá*/
+                            printf ("\n---Escolha do Primeiro Atributo---\n");
+                            printf ("1. População\n");
+                            printf ("2. Área\n");
+                            printf ("3. PIB\n");
+                            printf ("4. Números de Pontos Turísticos\n");
+                            printf ("5. Densidade Populacional\n");
+                            printf ("Escolha um dos atributos acima para realizar a comparação: ");
+                            scanf ("%d", &comp_atrib1);
 
-                        if (PIB > PIB1) {
-                            printf ("\n   ---Comparação--- \n");
-                            printf ("Carta 1\n");
-                            printf ("Pais: %s\n", country_name);
-                            printf ("Atributo: PIB\n");
-                            printf ("Valores: %llu\n", PIB);
-                            
-                            printf ("\nCarta 2\n");
-                            printf ("Pais: %s\n", country_name1);
-                            printf ("Atributo: PIB\n");
-                            printf ("Valores: %llu\n", PIB1);
-                            printf ("Vencedor: Carta 1: PIB (%llu).\n", PIB);
-    
-                        }
-                        else if (PIB == PIB1){
-                            
-                            printf ("\n   ---Comparação--- \n");
-                            printf ("Carta 1\n");
-                            printf ("Pais: %s\n", country_name);
-                            printf ("Atributo: PIB\n");
-                            printf ("Valores: %llu\n", PIB);
-    
-                            printf ("\nCarta 2\n");
-                            printf ("Pais: %s\n", country_name1);
-                            printf ("Atributo: PIB\n");
-                            printf ("Valores: %llu\n", PIB1);
-                            printf ("Vencedor: Empate! Sendo que Carta 1: PIB com %llu e Carta 2: PIB com %llu.\n", PIB, PIB1);
-                        }
-                        else {
-                            printf ("\n   ---Comparação--- \n");
-                            printf ("Carta 1\n");
-                            printf ("Pais: %s\n", country_name);
-                            printf ("Atributo: PIB\n");
-                            printf ("Valores: %llu\n", PIB);
-                            
-                            printf ("\nCarta 2\n");
-                            printf ("Pais: %s\n", country_name1);
-                            printf ("Atributo: PIB\n");
-                            printf ("Valores: %llu\n", PIB1);
-                            printf ("Vencedor: Carta 2: PIB (%llu).\n", PIB1);
-                        }
-                    break;
+                        switch (comp_atrib1) {
 
-                    case 4:
+                            case 1:
 
-                        if (tourist_attractions > tourist_attractions1) {
-                            printf ("\n   ---Comparação--- \n");
-                            printf ("Carta 1\n");
-                            printf ("Pais: %s\n", country_name);
-                            printf ("Atributo: Pontos Turísticos\n");
-                            printf ("Valores: %d\n", tourist_attractions);
-                            
-                            printf ("\nCarta 2\n");
-                            printf ("Pais: %s\n", country_name1);
-                            printf ("Atributo: Pontos Turísticos\n");
-                            printf ("Valores: %d\n", tourist_attractions1);
-                            printf ("Vencedor: Carta 1: Pontos Turísticos (%d).\n", tourist_attractions);
-    
-                        }
-                        else if (tourist_attractions == tourist_attractions1){
-                            
-                            printf ("\n   ---Comparação--- \n");
-                            printf ("Carta 1\n");
-                            printf ("Pais: %s\n", country_name);
-                            printf ("Atributo: Pontos Turísticos\n");
-                            printf ("Valores: %d\n", tourist_attractions);
-    
-                            printf ("\nCarta 2\n");
-                            printf ("Pais: %s\n", country_name1);
-                            printf ("Atributo: Pontos Turísticos\n");
-                            printf ("Valores: %d\n", tourist_attractions1);
-                            printf ("Vencedor: Empate! Sendo que Carta 1: Pontos Turísticos com %d e Carta 2: Pontos Turísticos com %d.\n", tourist_attractions, tourist_attractions1);
-                        }
-                        else {
-                            printf ("\n   ---Comparação--- \n");
-                            printf ("Carta 1\n");
-                            printf ("Pais: %s\n", country_name);
-                            printf ("Atributo: Pontos Turísticos\n");
-                            printf ("Valores: %d\n", tourist_attractions);
-                            
-                            printf ("\nCarta 2\n");
-                            printf ("Pais: %s\n", country_name1);
-                            printf ("Atributo: Pontos Turísticos\n");
-                            printf ("Valores: %d\n", tourist_attractions1);
-                            printf ("Vencedor: Carta 2: Pontos Turísticos (%d).\n", tourist_attractions1);
-                        }
-                    break;
+                            test1 = populat1 > populat2 ? (victory_cart = victory_cart + 1 ): (victory_cart1 = victory_cart1 + 1);
+                                attribute1 = "População";
+                                exb_cart1_atrb1_lu = populat1;
+                                exb_cart2_atrb1_lu = populat2;
+                            break;
 
-                    case 5:
+                            case 2:
 
-                        if (population_density < population_density1) {
-                            printf ("\n   ---Comparação--- \n");
-                            printf ("Carta 1\n");
-                            printf ("Pais: %s\n", country_name);
-                            printf ("Atributo: Densidade Populacional\n");
-                            printf ("Valores: %.2f\n", population_density);
-                            
-                            printf ("\nCarta 2\n");
-                            printf ("Pais: %s\n", country_name1);
-                            printf ("Atributo: Densidade Populacional\n");
-                            printf ("Valores: %.2f\n", population_density1);
-                            printf ("Vencedor: Carta 1: Densidade Populacional (%.2f).\n", population_density);
-    
+                            test1 = area1 > area2 ? (victory_cart = victory_cart + 1) : (victory_cart1 = victory_cart1 + 1);
+                                attribute1 = "Área";
+                                exb_cart1_atrb1_llu = area1;
+                                exb_cart2_atrb1_llu = area2;
+                            break;
+
+                            case 3:
+
+                            test1 = PIB1 > PIB2 ? (victory_cart = victory_cart + 1) : (victory_cart1 = victory_cart1 + 1);
+                                attribute1 = "PIB";
+                                exb_cart1_atrb1_lluu = PIB1;
+                                exb_cart2_atrb1_lluu = PIB2;
+                            break;
+
+                            case 4:
+                                
+                            test1 = tourist_attractions1 > tourist_attractions2 ? (victory_cart = victory_cart + 1) : (victory_cart1 = victory_cart1 + 1);
+                                attribute1 = "Pontos Túristicos";
+                                exb_cart1_atrb1_int = tourist_attractions1;
+                                exb_cart2_atrb1_int = tourist_attractions2;
+                            break;
+
+                            case 5:
+
+                            test1 = population_density1 < population_density2 ? (victory_cart = victory_cart + 1) : (victory_cart1 = victory_cart1 + 1);
+                                attribute1 = "Densidade Populacional";
+                                exb_cart1_atrb1_f = population_density1;
+                                exb_cart2_atrb1_f = population_density2;
+                            break;
+
+                            default:
+                                printf("Opção invalida, infelizmente o programa irá ser encerrado!");
+                                return 0;
+                            break;
                         }
-                        else if (population_density == population_density1){
                             
-                            printf ("\n   ---Comparação--- \n");
-                            printf ("Carta 1\n");
-                            printf ("Pais: %s\n", country_name);
-                            printf ("Atributo: Densidade Populacional\n");
-                            printf ("Valores: %.2f\n", population_density);
-    
-                            printf ("\nCarta 2\n");
-                            printf ("Pais: %s\n", country_name1);
-                            printf ("Atributo: Densidade Populacional\n");
-                            printf ("Valores: %.2f\n", population_density1);
-                            printf ("Vencedor: Empate! Sendo que Carta 1: Densidade Populacional com %.2f e Carta 2: Densidade Populacional com %.2f.\n", population_density, population_density1);
-                        }
-                        else {
-                            printf ("\n   ---Comparação--- \n");
-                            printf ("Carta 1\n");
-                            printf ("Pais: %s\n", country_name);
-                            printf ("Atributo: Densidade Populacional\n");
-                            printf ("Valores: %.2f\n", population_density);
                             
-                            printf ("\nCarta 2\n");
-                            printf ("Pais: %s\n", country_name1);
-                            printf ("Atributo: Densidade Populacional\n");
-                            printf ("Valores: %.2f\n", population_density1);
-                            printf ("Vencedor: Carta 2: Densidade Populacional (%.2f).\n", population_density1);
+                            printf ("\n---Escolha do Segundo Atributo---\n");
+                            printf ("1. População\n");
+                            printf ("2. Área\n");
+                            printf ("3. PIB1\n");
+                            printf ("4. Números de Pontos Turísticos\n");
+                            printf ("5. Densidade Populacional\n");
+
+                            printf ("\nEscolha um dos atributos acima para realizar a comparação, lembrando que tem que ser diferente do primeiro atributo: ");
+                                scanf ("%d", &comp_atrib2);
+
+                        /*Esse if-else está iniciando a próxima comparação de atributos e armazenamento só se o primeiro do diferente*/
+
+                        if (comp_atrib1 != comp_atrib2) {
+
+                            switch (comp_atrib2) {
+
+                                case 1:
+                                    test2 = populat1 > populat2 ? (victory_cart = victory_cart + 1) : (victory_cart1 = victory_cart1 + 1);
+                                        attribute2 = "População";
+                                        exb_cart1_atrb2_lu = populat1;
+                                        exb_cart2_atrb2_lu = populat2;
+                                break;
+                    
+                                case 2:
+                                    test2 = area1 > area2 ? (victory_cart = victory_cart + 1) : (victory_cart1 = victory_cart1 + 1);
+                                        attribute2 = "Área";
+                                        exb_cart1_atrb2_llu = area1;
+                                        exb_cart2_atrb2_llu = area2;
+                                break;
+                    
+                                case 3:
+                                    test2 = PIB1 > PIB2 ? (victory_cart = victory_cart + 1) : (victory_cart1 = victory_cart1 + 1);
+                                        attribute2 = "PIB";
+                                        exb_cart1_atrb2_lluu = PIB1;
+                                        exb_cart2_atrb2_lluu = PIB2;
+                                break;
+                    
+                                case 4: 
+                                    test2 = tourist_attractions1 > tourist_attractions2 ? (victory_cart = victory_cart + 1) : (victory_cart1 = victory_cart1 + 1);
+                                        attribute2 = "Pontos Túristicos";
+                                        exb_cart1_atrb2_int = tourist_attractions1;
+                                        exb_cart2_atrb2_int = tourist_attractions2;
+                                break;
+                    
+                                case 5:
+                                    test2 = population_density1 < population_density2 ? (victory_cart = victory_cart + 1) : (victory_cart1 = victory_cart1 + 1);
+                                        attribute2 = "Densidade Populacional";
+                                        exb_cart1_atrb2_f = population_density1;
+                                        exb_cart2_atrb2_f = population_density2;
+                                break;
+
+                                default:
+                                    printf("Opção invalida, infelizmente o programa irá ser encerrado!");
+                                    return 0;
+                                break;
+                            }
+                        } else {
+                            printf ("Você não pode escolher o mesmo atributo para realizar a comparação, infelizmente o programa vai ser encerrado!");
+                            return 0;
                         }
                     break;
                     
                     default:
-                        printf ("Opção invalida!");
+                        printf ("Opção invalida, infelizmente o programa irá ser encerrado!");
+                        return 0;
                     break;
                 }
-            break;
 
-            default:
-                printf ("Opção invalida!");
-            break;
-        }
-    
-    return 0;
+                /*Processamento de soma dos atributos para a comparação de vencedor ou perdedor*/
+                sum1 = (populat1 + area1 + PIB1 + tourist_attractions1 + population_density1);
+                sum2 = (populat2 + area2 + PIB2 + tourist_attractions2 + population_density2);
+
+                /*///////////////////////////////////////////////////////////////////////////////////////////////////
+                Exibição de todos os dados de comparação e ganhador e exibilçao das cartas e seus respectivos valores
+                ///////////////////////////////////////////////////////////////////////////////////////////////////*/
+                if (opcao == 3){
+                    printf ("\n---Informações das Cartas---\n");
+                                    printf ("Carta 1: %s%s\n", country_letter1, code_letter1);
+                                    printf ("Pais: %s\n", country_name1);
+                                    printf ("Primeiro Atributo: %s - ", attribute1);
+                                    if (comp_atrib1 == 1) printf ("Valor: %lu\n", exb_cart1_atrb1_lu);
+                                    else if (comp_atrib1 == 2) printf ("Valor: %llu\n", exb_cart1_atrb1_llu);
+                                    else if (comp_atrib1 == 3) printf ("Valor: %llu\n", exb_cart1_atrb1_lluu);
+                                    else if (comp_atrib1 == 4) printf ("Valor: %d\n", exb_cart1_atrb1_int);
+                                    else if (comp_atrib1 == 5) printf ("Valor: %f\n", exb_cart1_atrb1_f);
+                                    printf ("Segundo Atributo: %s - ", attribute2);
+                                    if (comp_atrib2 == 1) printf ("Valor: %lu\n", exb_cart1_atrb2_lu);
+                                    else if (comp_atrib2 == 2) printf ("Valor: %llu\n", exb_cart1_atrb2_llu);
+                                    else if (comp_atrib2 == 3) printf ("Valor: %llu\n", exb_cart1_atrb2_lluu);
+                                    else if (comp_atrib2 == 4) printf ("Valor: %d\n", exb_cart1_atrb2_int);
+                                    else if (comp_atrib2 == 5) printf ("Valor: %f\n", exb_cart1_atrb2_f);
+            
+                                    printf ("\nCarta 2: %s%s\n", country_letter2, code_letter2);
+                                    printf ("Pais: %s\n", country_name2);
+                                    printf ("Primeiro Atributo: %s -", attribute1);
+                                    if (comp_atrib1 == 1) printf ("Valor: %lu\n", exb_cart2_atrb1_lu);
+                                    else if (comp_atrib1 == 2) printf ("Valor: %llu\n", exb_cart2_atrb1_llu);
+                                    else if (comp_atrib1 == 3) printf ("Valor: %llu\n", exb_cart2_atrb1_lluu);
+                                    else if (comp_atrib1 == 4) printf ("Valor: %d\n", exb_cart2_atrb1_int);
+                                    else if (comp_atrib1 == 5) printf ("Valor: %f\n", exb_cart2_atrb1_f);
+                                    printf ("Segundo Atributo: %s -", attribute2);
+                                    if (comp_atrib2 == 1) printf ("Valor: %lu\n", exb_cart2_atrb2_lu);
+                                    else if (comp_atrib2 == 2) printf ("Valor: %llu\n", exb_cart2_atrb2_llu);
+                                    else if (comp_atrib2 == 3) printf ("Valor: %llu\n", exb_cart2_atrb2_lluu);
+                                    else if (comp_atrib2 == 4) printf ("Valor: %d\n", exb_cart2_atrb2_int);
+                                    else if (comp_atrib2 == 5) printf ("Valor: %f\n", exb_cart2_atrb2_f);
+                                    
+                    printf ("\n---Comparação dos Atributos---\n");
+                                    if (test1 == test2) {
+                                        printf ("Resultado: Empate! Carta 1 - %d atributo(s) / Carta 2 - %d atributo(s)!\n", test1, test2);
+                                    }
+                                    else if (test1 > test2) {
+                                        printf ("Resultado: Vencedor! Carta 1 - %d atributo(s) / Carta 2 - %d atributo(s)!\n", test1, test2);
+                                    }
+                                    else {
+                                        printf("Resultado: Vencedor! Carta 2 - %d atributo(s) / Carta 1 - %d atributo(s)!\n", test2, test1);
+                                    }
+
+                    printf ("\n---Soma dos Atributos---\n");
+                                    if (sum1 == sum2) printf ("Soma de todos os atributos: Empate! Carta 1 - %llu / Carta2 - %llu.\n", sum1, sum2);
+                                    else if (sum1 > sum2) printf ("Soma de todos os atributos: Vencedor! Carta 1 - %llu / Carta2 - %llu.\n", sum1, sum2);
+                                    else printf ("Soma de todos os atributos: Vencedor! Carta 2 - %llu / Carta 1 - %llu.\n", sum2, sum1);
+                    }
+        break;
+
+        case 4:
+            printf ("\nSaindo");
+            Sleep (1000);
+            printf(".");
+            Sleep (1000);
+            printf(".");
+            Sleep (1000);
+            printf(".");
+            Sleep (1000);
+            printf(".");
+            Sleep (1000);
+            printf(".");
+        break;
+        default:
+            printf ("Opção invalida, infelizmente o programa irá ser encerrado!");
+            return 0;
+        break;
+    }
+return 0;
 }
